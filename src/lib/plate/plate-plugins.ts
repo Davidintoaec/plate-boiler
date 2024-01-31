@@ -46,7 +46,6 @@ import {
   RenderAfterEditable,
   someNode,
 } from '@udecode/plate-common';
-import { createDndPlugin } from '@udecode/plate-dnd';
 import { createEmojiPlugin } from '@udecode/plate-emoji';
 import {
   createExcalidrawPlugin,
@@ -152,7 +151,6 @@ import {
 import { TableElement } from '@/components/plate-ui/table-element';
 import { TableRowElement } from '@/components/plate-ui/table-row-element';
 import { TodoListElement } from '@/components/plate-ui/todo-list-element';
-import { withDraggables } from '@/components/plate-ui/with-draggables';
 import { TabbableElement } from '@/components/tabbable-element';
 
 const resetBlockTypesCommonRule = {
@@ -258,9 +256,6 @@ export const plugins = createPlugins(
       },
     }),
     createComboboxPlugin(),
-    createDndPlugin({
-      options: { enableScroller: true },
-    }),
     createEmojiPlugin({
       renderAfterEditable: EmojiCombobox as RenderAfterEditable,
     }),
@@ -376,45 +371,43 @@ export const plugins = createPlugins(
     createJuicePlugin(),
   ],
   {
-    components: withDraggables(
-      withPlaceholders({
-        [ELEMENT_BLOCKQUOTE]: BlockquoteElement,
-        [ELEMENT_CODE_BLOCK]: CodeBlockElement,
-        [ELEMENT_CODE_LINE]: CodeLineElement,
-        [ELEMENT_CODE_SYNTAX]: CodeSyntaxLeaf,
-        [ELEMENT_HR]: HrElement,
-        [ELEMENT_H1]: withProps(HeadingElement, { variant: 'h1' }),
-        [ELEMENT_H2]: withProps(HeadingElement, { variant: 'h2' }),
-        [ELEMENT_H3]: withProps(HeadingElement, { variant: 'h3' }),
-        [ELEMENT_H4]: withProps(HeadingElement, { variant: 'h4' }),
-        [ELEMENT_H5]: withProps(HeadingElement, { variant: 'h5' }),
-        [ELEMENT_H6]: withProps(HeadingElement, { variant: 'h6' }),
-        [ELEMENT_IMAGE]: ImageElement,
-        [ELEMENT_LI]: withProps(PlateElement, { as: 'li' }),
-        [ELEMENT_LINK]: LinkElement,
-        [ELEMENT_MEDIA_EMBED]: MediaEmbedElement,
-        [ELEMENT_MENTION]: MentionElement,
-        [ELEMENT_MENTION_INPUT]: MentionInputElement,
-        [ELEMENT_UL]: withProps(ListElement, { variant: 'ul' }),
-        [ELEMENT_OL]: withProps(ListElement, { variant: 'ol' }),
-        [ELEMENT_PARAGRAPH]: ParagraphElement,
-        [ELEMENT_TABLE]: TableElement,
-        [ELEMENT_TD]: TableCellElement,
-        [ELEMENT_TH]: TableCellHeaderElement,
-        [ELEMENT_TODO_LI]: TodoListElement,
-        [ELEMENT_TR]: TableRowElement,
-        [ELEMENT_EXCALIDRAW]: ExcalidrawElement,
-        [MARK_BOLD]: withProps(PlateLeaf, { as: 'strong' }),
-        [MARK_CODE]: CodeLeaf,
-        [MARK_HIGHLIGHT]: HighlightLeaf,
-        [MARK_ITALIC]: withProps(PlateLeaf, { as: 'em' }),
-        [MARK_KBD]: KbdLeaf,
-        [MARK_STRIKETHROUGH]: withProps(PlateLeaf, { as: 's' }),
-        [MARK_SUBSCRIPT]: withProps(PlateLeaf, { as: 'sub' }),
-        [MARK_SUPERSCRIPT]: withProps(PlateLeaf, { as: 'sup' }),
-        [MARK_UNDERLINE]: withProps(PlateLeaf, { as: 'u' }),
-        [MARK_COMMENT]: CommentLeaf,
-      })
-    ),
+    components: withPlaceholders({
+      [ELEMENT_BLOCKQUOTE]: BlockquoteElement,
+      [ELEMENT_CODE_BLOCK]: CodeBlockElement,
+      [ELEMENT_CODE_LINE]: CodeLineElement,
+      [ELEMENT_CODE_SYNTAX]: CodeSyntaxLeaf,
+      [ELEMENT_HR]: HrElement,
+      [ELEMENT_H1]: withProps(HeadingElement, { variant: 'h1' }),
+      [ELEMENT_H2]: withProps(HeadingElement, { variant: 'h2' }),
+      [ELEMENT_H3]: withProps(HeadingElement, { variant: 'h3' }),
+      [ELEMENT_H4]: withProps(HeadingElement, { variant: 'h4' }),
+      [ELEMENT_H5]: withProps(HeadingElement, { variant: 'h5' }),
+      [ELEMENT_H6]: withProps(HeadingElement, { variant: 'h6' }),
+      [ELEMENT_IMAGE]: ImageElement,
+      [ELEMENT_LI]: withProps(PlateElement, { as: 'li' }),
+      [ELEMENT_LINK]: LinkElement,
+      [ELEMENT_MEDIA_EMBED]: MediaEmbedElement,
+      [ELEMENT_MENTION]: MentionElement,
+      [ELEMENT_MENTION_INPUT]: MentionInputElement,
+      [ELEMENT_UL]: withProps(ListElement, { variant: 'ul' }),
+      [ELEMENT_OL]: withProps(ListElement, { variant: 'ol' }),
+      [ELEMENT_PARAGRAPH]: ParagraphElement,
+      [ELEMENT_TABLE]: TableElement,
+      [ELEMENT_TD]: TableCellElement,
+      [ELEMENT_TH]: TableCellHeaderElement,
+      [ELEMENT_TODO_LI]: TodoListElement,
+      [ELEMENT_TR]: TableRowElement,
+      [ELEMENT_EXCALIDRAW]: ExcalidrawElement,
+      [MARK_BOLD]: withProps(PlateLeaf, { as: 'strong' }),
+      [MARK_CODE]: CodeLeaf,
+      [MARK_HIGHLIGHT]: HighlightLeaf,
+      [MARK_ITALIC]: withProps(PlateLeaf, { as: 'em' }),
+      [MARK_KBD]: KbdLeaf,
+      [MARK_STRIKETHROUGH]: withProps(PlateLeaf, { as: 's' }),
+      [MARK_SUBSCRIPT]: withProps(PlateLeaf, { as: 'sub' }),
+      [MARK_SUPERSCRIPT]: withProps(PlateLeaf, { as: 'sup' }),
+      [MARK_UNDERLINE]: withProps(PlateLeaf, { as: 'u' }),
+      [MARK_COMMENT]: CommentLeaf,
+    }),
   }
 );
